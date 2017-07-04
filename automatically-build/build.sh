@@ -10,8 +10,9 @@ scheme_name="scheme名称"
 info_plist_name="Info"
 # 指定要打包编译的方式 : Release Debug
 build_configuration="Release"
-
-# ===============================自动打包部分(无特殊情况不用修改)============================= #
+# 当前时间
+current_date=$(date +%Y-%m-%d)
+current_time=$(date +%Y-%m-%d-%H-%M-%S)
 
 # 导出ipa所需要的plist文件路径 (默认为AdHocExportOptionsPlist.plist)
 ExportOptionsPlistPath="./automatically-build/AdHocExportOptionsPlist.plist"
@@ -25,19 +26,17 @@ bundle_version=`/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" $i
 bundle_build_version=`/usr/libexec/PlistBuddy -c "Print CFBundleIdentifier" $info_plist_path`
 bundle_identifier=`/usr/libexec/PlistBuddy -c "Print CFBundleVersion" $info_plist_path`
 
-# 删除旧.xcarchive文件
-rm -rf ~/Desktop/$scheme_name-IPA/$scheme_name.xcarchive
 # 指定输出ipa路径
-export_path=~/Desktop/$scheme_name-IPA
+export_path=~/Desktop/${scheme_name}/${current_time}/
 # 指定输出归档文件地址
-export_archive_path="$export_path/$scheme_name.xcarchive"
+export_archive_path="~/Library/Developer/Xcode/Archives/${current_date}/${scheme_name}${current_time}.xcarchive"
 # 指定输出ipa地址
 export_ipa_path="$export_path"
 # 指定输出ipa名称 : scheme_name + bundle_version
-ipa_name="$scheme_name-v$bundle_version"
+ipa_name="${scheme_name}-v${bundle_version}"
 
-# AdHoc,AppStore,Enterprise三种打包方式的区别: http://blog.csdn.net/lwjok2007/article/details/46379945
-echo "\033[36;1m请选择打包方式(输入序号,按回车即可) \033[0m"
+# 选择打包方式
+echo "\033[36;1m请选择打包方式[默认使用：1] \033[0m"
 echo "\033[33;1m1. AdHoc       \033[0m"
 echo "\033[33;1m2. AppStore    \033[0m"
 echo "\033[33;1m3. Enterprise  \033[0m"
