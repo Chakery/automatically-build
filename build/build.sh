@@ -27,7 +27,7 @@ bundle_build_version=`/usr/libexec/PlistBuddy -c "Print CFBundleIdentifier" $inf
 bundle_identifier=`/usr/libexec/PlistBuddy -c "Print CFBundleVersion" $info_plist_path`
 
 # 指定输出ipa路径
-export_path=~/Desktop/${scheme_name}/${current_time}/
+export_path=~/Desktop/${scheme_name}/${current_time}
 # 指定输出归档文件地址
 export_archive_path=~/Library/Developer/Xcode/Archives/${current_date}/${scheme_name}${current_time}.xcarchive
 # 指定输出ipa地址
