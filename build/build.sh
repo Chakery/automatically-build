@@ -15,7 +15,7 @@ current_date=$(date +%Y-%m-%d)
 current_time=$(date +%Y-%m-%d-%H-%M-%S)
 
 # 导出ipa所需要的plist文件路径 (默认为AdHocExportOptionsPlist.plist)
-ExportOptionsPlistPath="./automatically-build/AdHocExportOptionsPlist.plist"
+ExportOptionsPlistPath="./build/AdHocExportOptionsPlist.plist"
 # 返回上一级目录,进入项目工程目录
 cd ..
 # 获取项目名称
@@ -50,13 +50,13 @@ method="$parameter"
 if [ -n "$method" ]
 then
     if [ "$method" = "1" ] ; then
-    ExportOptionsPlistPath="./automatically-build/AdHocExportOptionsPlist.plist"
+    ExportOptionsPlistPath="./build/AdHocExportOptionsPlist.plist"
     elif [ "$method" = "2" ] ; then
-    ExportOptionsPlistPath="./automatically-build/AppStoreExportOptionsPlist.plist"
+    ExportOptionsPlistPath="./build/AppStoreExportOptionsPlist.plist"
     elif [ "$method" = "3" ] ; then
-    ExportOptionsPlistPath="./automatically-build/EnterpriseExportOptionsPlist.plist"
+    ExportOptionsPlistPath="./build/EnterpriseExportOptionsPlist.plist"
     elif [ "$method" = "4" ] ; then
-    ExportOptionsPlistPath="./automatically-build/DevelopmentExportOptionsPlist.plist"
+    ExportOptionsPlistPath="./build/DevelopmentExportOptionsPlist.plist"
     else
     echo "输入的参数无效!!!"
     exit 1
